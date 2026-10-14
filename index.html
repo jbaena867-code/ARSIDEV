@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arsidev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <video class="video-fondo" autoplay muted loop playsinline>
+      <source src="imagenes/Video Project.mp4" type="video/mp4">
+  </video>
+
+  <!-- 1. INICIO (hero) -->
+  <header class="inicio" id="inicio">
+    
+
+    <button id="btn-menu" class="btn-menu" type="button" aria-expanded="false" aria-controls="menu">☰</button>
+      <nav id="menu" aria-label="Menú principal" aria-hidden="true">
+      <a href="./index.html">Inicio</a>
+      <a href="servicios/servicios.html">Servicios</a>
+      <a href="nosotros.html">Nosotros</a>
+    </nav>
+    
+
+    <div class="marca">
+      <!-- Logo: luna creciente dibujada en SVG (se ve nítida en cualquier tamaño) -->
+       <img class="logo" src="imagenes/logo.png" alt="Logo de Arsidev">
+
+      <h1 class="nombre">Arsidev</h1>
+    </div>
+
+  </header>
+   
+  <main>
+    <div id="mensaje" class="mensaje">
+      <h2><strong>¿Te gusta lo que ves? Tu negocio puede lucir igual.</strong></h2>
+      <p>
+        Diseñamos y desarrollamos software y sitios web a la medida: 
+        rápidos, seguros y pensados para convertir visitantes en clientes. 
+        Desde la idea hasta el lanzamiento, trabajamos contigo en cada paso
+         para que tu marca destaque donde importa.
+        </p>
+        <button class="servicios" onclick="window.location.href='servicios/servicios.html'">Servicios</button>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2026 Arsidev. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/menu.js"></script>
+</body>
+</html>

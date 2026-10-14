@@ -1,0 +1,233 @@
+/*fuentes*/
+@font-face {
+  font-family: "Michroma";
+  src: url("../font/Michroma-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Manrope";
+  src: url("../font/Manrope-VariableFont_wght.ttf") format("truetype");
+}
+/*  variable en la pagina */
+:root {
+  --fondo: #131313;            /* color de fondo */
+  --tinta: #d6dcea;        /* color del logo y del texto */
+  --tinta2: #212123;
+  --acento: #3a6ea5;
+  --fuente: "Michroma", system-ui, sans-serif;
+  --fuente2: "Manrope", system-ui, sans-serif;
+}
+
+
+/* BASE */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--fuente);
+  color: var(--tinta);
+  background: var(--fondo);
+}
+
+/* ===== 3. INICIO ===== */
+.inicio {
+  min-height: 100vh;          /* ocupa toda la pantalla */
+  min-height: 100svh;         /* mejor en celulares */
+  display: grid;
+  place-items: center;        /* centra el logo */
+  position: relative;
+  overflow: hidden;           /* oculta la luna mientras está "abajo" */
+  z-index: 1;
+}
+
+/*fondo de video*/
+.video-fondo {
+  position: fixed;          /*consultar*/
+  inset: 0;               /*consultar*/
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /*consultar*/
+  z-index: -1;
+}
+
+.btn-menu {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  padding: 0;
+  margin: 0;
+  border: 2px solid silver;
+  background: transparent;
+  color: silver;
+  font-size: 20px;
+  font-family: var(--fuente);
+  font-weight: 500;
+  
+  cursor: pointer;           /*consultar*/   
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+
+.btn-menu:hover {
+  transform: scale(1.1);           /*consultar*/
+}
+
+.btn-menu:focus-visible {         /*consultar*/
+  outline: 3px solid var(--acento);
+  outline-offset: 3px;
+}
+.btn-menu:focus-visible { outline: 3px solid var(--acento); outline-offset: 3px; }
+
+#menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center ;
+  position: absolute;
+  z-index: 2;
+  top: 1.25rem;
+  left: 1.25rem;
+  width: 95%;
+  height: 50px;
+  background: silver;
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: transform 1.8s ease, visibility 0.4s;
+  border-radius: 25px;
+  font-size: clamp(0.8rem, 2vw, .7rem);
+}
+
+#menu.abierto {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.btn-menu[aria-expanded="true"] {
+  color: #131313;
+}
+
+  #menu a {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8px;
+    color: black;
+    text-decoration: none;
+  }
+
+  #menu a:hover {
+    background: rgb(255 255 255 / 12%);
+  }
+
+.marca {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* clamp(mínimo, ideal, máximo): el tamaño crece con la pantalla pero con límites */
+.logo {
+  width: clamp(140px, 32vw, 300px);
+  height: auto;
+  fill: var(--tinta);
+}
+
+.nombre {
+  margin: 0;
+  font-weight: 200;
+  font-size: clamp(2.2rem, 7vw, 4.5rem);
+  letter-spacing: .08em;
+}
+
+/* ===== 4. ANIMACIÓN DE ENTRADA ===== */
+/* Estado inicial: todo escondido hasta que JS agrega la clase "listo" al <body> */
+.logo, .nombre, .btn-menu { opacity: 0; }
+
+.listo .logo {
+  animation: sube-luna 1.4s cubic-bezier(.22, 1, .36, 1) forwards;
+  transform-origin: 50% 60%;
+}
+
+.listo .nombre {
+  animation: aparece-texto 0.5s ease-out 1s forwards;   /* espera 1s a que la luna llegue */
+}
+
+.listo .btn-menu {
+  animation: aparece 0.8s ease-out 1.8s forwards;     /* el menú aparece al final */
+}
+
+/* La luna sube desde abajo y gira un poco (como en las flechas del boceto) */
+@keyframes sube-luna {
+  from { opacity: 0; transform: translateY(70vh) rotate(100deg); }
+  to   { opacity: 1; transform: translateY(0)    rotate(0deg); }
+}
+
+/* El nombre aparece y las letras se "cierran" a su espacio final */
+@keyframes aparece-texto {
+  from { opacity: 0; letter-spacing: .4em; }
+  to   { opacity: 1; letter-spacing: .05em; }
+}
+
+@keyframes aparece {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Accesibilidad: si la persona pidió menos movimiento, no animamos */
+@media (prefers-reduced-motion: reduce) {
+  .listo .logo, .listo .nombre, .listo .btn-menu {
+    animation: aparece .3s forwards;
+    animation-delay: 0s;
+  }
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.8rem;
+  color: var(--tinta2);
+  background: #fff;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  z-index: 1;
+  padding: 60px;
+}
+
+.mensaje {
+  width: 70%;
+  max-width: 600px;
+  border-radius: 5px;
+  background-color: #131313;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-decoration: none;
+  font-family: var(--fuente2);
+  padding: 8px;
+}
+
+.mensaje button {
+  background-color: silver;
+  color: #000000;
+  border: none;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
