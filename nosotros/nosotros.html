@@ -1,0 +1,63 @@
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arsidev - Servicios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../css/styleservices.css">
+</head>
+<body>
+  <video class="video-fondo" autoplay muted loop playsinline>
+      <source src="../imagenes/Video Project.mp4" type="video/mp4">
+  </video>
+
+  <!-- 1. INICIO (hero) -->
+  <header class="inicio" id="inicio">
+    
+
+    <button id="btn-menu" class="btn-menu" type="button" aria-expanded="false" aria-controls="menu">☰</button>
+      <nav id="menu" aria-label="Menú principal" aria-hidden="true">
+      <a href="../index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="../nosotros.html">Nosotros</a>
+    </nav>
+<h1>Servicios</h1>
+  </header>
+   
+  <main>
+    <div class="debug">
+      <img src="../imagenes/bug.png" alt="Debug" class="debug-image">
+      <section class="debug-text">
+        <h2>Debug</h2>
+        <p>Identificamos y solucionamos errores en tu software para garantizar un rendimiento óptimo y una experiencia de usuario sin problemas.</p>
+        <button class="servicios" onclick="window.location.href='debug/debug.html'">Ver más</button>
+      </section>
+    </div>
+
+    <div class="crear">
+      <img src="../imagenes/crear.png" alt="Crear" class="crear-image">
+      <section class="crear-text">
+        <h2>Crear</h2>
+        <p>Desarrollamos soluciones personalizadas que se adaptan a las necesidades de tu negocio, desde aplicaciones web hasta sistemas complejos.</p>
+        <button class="servicios" onclick="window.location.href='crear/crear.html'">Ver más</button>
+      </section>
+    </div>
+
+    <div class="mantenimiento">
+        <img src="../imagenes/mantenimiento.png" alt="Mantenimiento" class="mantenimiento-image">
+        <section class="mantenimiento-text">
+          <h2>Mantenimiento</h2>
+          <p>Ofrecemos servicios de mantenimiento continuo para asegurar que tu software y sistemas funcionen sin interrupciones y estén siempre actualizados.</p>
+          <button class="servicios" onclick="window.location.href='mantenimiento/mantenimiento.html'">Ver más</button>
+        </section>
+    </div>
+
+  </main>
+  <footer>
+    <p>&copy; 2026 Arsidev. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="../js/menu.js"></script>
+</body>
+</html> 

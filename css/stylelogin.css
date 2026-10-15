@@ -1,0 +1,210 @@
+/*fuente*/
+@font-face {
+  font-family: "Michroma";
+  src: url("../font/Michroma-Regular.ttf") format("truetype");
+}
+/*  variable en la pagina */
+:root {
+  --fondo: #131313;            /* color de fondo */
+  --tinta: #d6dcea;        /* color del logo y del texto */
+  --tinta2: #212123;
+  --acento:   #8a8a8a;
+  --fuente: "Michroma", system-ui, sans-serif;
+}
+
+
+/* BASE */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--fuente);
+  color: var(--tinta);
+  background: var(--fondo);
+}
+
+/*header*/
+
+.inicio {
+  min-height: 10vh;         
+  min-height: 10svh;         
+  display: grid;
+  place-items: center;        
+  position: relative;
+  overflow: hidden;           
+  z-index: 1;
+}
+
+
+/*fondo de video*/
+.video-fondo {
+  position: fixed;          /*consultar*/
+  inset: 0;               /*consultar*/
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /*consultar*/
+  z-index: -1;
+}
+
+.btn-menu {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  padding: 0;
+  margin: 0;
+  border: 2px solid gold;
+  background: transparent;
+  color: gold;
+  font-size: 20px;
+  font-family: var(--fuente);
+  font-weight: 500;
+  
+  cursor: pointer;           /*consultar*/   
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+
+.btn-menu:hover {
+  transform: scale(1.1);           /*consultar*/
+}
+
+.btn-menu:focus-visible {         /*consultar*/
+  outline: 3px solid var(--acento);
+  outline-offset: 3px;
+}
+.btn-menu:focus-visible { outline: 3px solid var(--acento); outline-offset: 3px; }
+
+#menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center ;
+  position: absolute;
+  z-index: 2;
+  top: 1.25rem;
+  left: 1.25rem;
+  width: 95%;
+  height: 50px;
+  background: gold;
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: transform 1.8s ease, visibility 0.4s;
+  border-radius: 25px;
+  font-size: clamp(0.8rem, 2vw, .7rem);
+}
+
+#menu.abierto {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.btn-menu[aria-expanded="true"] {
+  color: #131313;
+}
+
+  #menu a {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8px;
+    color: black;
+    text-decoration: none;
+  }
+
+  #menu a:hover {
+    background: rgb(255 255 255 / 12%);
+  }
+
+.listo .btn-menu {
+  animation: aparece 0.8s ease-out 1.8s forwards;     /* el menú aparece al final */
+}
+
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.8rem;
+  color: var(--tinta2);
+  background: #fff;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: space-around;
+  z-index: 1;
+  padding: 60px;
+  min-height: 100vh;          /* ocupa toda la pantalla */
+  min-height: 100svh;  
+}
+
+.login   {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-items: center ;
+  background: #d6dcea;
+  color: #131313;
+  padding: 5px;
+  font-size: 12px;
+  z-index: 9999;
+  width: 47vw;
+  min-height: 30vh;
+  margin:auto;
+  border-radius: 5px;
+}
+
+.login p {
+  font-size: 1.3rem;
+  text-align: justify;
+}
+
+.login label {
+  font-size: 1.3rem;
+  text-align: justify;
+}
+
+.login h2 {
+  font-size: 38px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out,
+              background-color 0.3s ease-in-out;
+  z-index: 2;
+}
+
+div button {
+  border-radius: 5px;
+  font-family: var(--fuente);
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
