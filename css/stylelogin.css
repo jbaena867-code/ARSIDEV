@@ -63,9 +63,9 @@ body {
   
   padding: 0;
   margin: 0;
-  border: 2px solid gold;
+  border: 2px solid silver;
   background: transparent;
-  color: gold;
+  color: silver;
   font-size: 20px;
   font-family: var(--fuente);
   font-weight: 500;
@@ -96,7 +96,7 @@ body {
   left: 1.25rem;
   width: 95%;
   height: 50px;
-  background: gold;
+  background: silver;
   transform: translateX(-100%);
   visibility: hidden;
   transition: transform 1.8s ease, visibility 0.4s;
@@ -154,15 +154,15 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   justify-items: center ;
-  background: #d6dcea;
-  color: #131313;
+  background: #2d2d2d;
+  color: #ffffff;
   padding: 5px;
   font-size: 12px;
   z-index: 9999;
   width: 47vw;
-  min-height: 30vh;
+  min-height: 100vh;
   margin:auto;
-  border-radius: 5px;
+  border-radius: 1  5px;
 }
 
 .login p {
@@ -202,9 +202,28 @@ div button {
 
 .login form {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 10px;
   width: 100%;
+}
+
+.login img {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.login a {
+  color: var(--tinta);
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+.login input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
 }

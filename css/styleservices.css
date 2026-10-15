@@ -63,9 +63,10 @@ body {
   
   padding: 0;
   margin: 0;
-  border: 2px solid gold;
+  border: 2px solid silver
+  ;
   background: transparent;
-  color: gold;
+  color: silver;
   font-size: 20px;
   font-family: var(--fuente);
   font-weight: 500;
@@ -96,7 +97,7 @@ body {
   left: 1.25rem;
   width: 95%;
   height: 50px;
-  background: gold;
+  background: silver;
   transform: translateX(-100%);
   visibility: hidden;
   transition: transform 1.8s ease, visibility 0.4s;

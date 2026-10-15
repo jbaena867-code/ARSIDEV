@@ -2,21 +2,23 @@
 @font-face {
   font-family: "Michroma";
   src: url("../font/Michroma-Regular.ttf") format("truetype");
+  font-display: swap;
 }
 @font-face {
   font-family: "Manrope";
   src: url("../font/Manrope-VariableFont_wght.ttf") format("truetype");
+  font-display: swap;
 }
+
 /*  variable en la pagina */
 :root {
-  --fondo: #131313;            /* color de fondo */
+  --fondo: #131313;        /* color de fondo */
   --tinta: #d6dcea;        /* color del logo y del texto */
   --tinta2: #212123;
   --acento: #3a6ea5;
   --fuente: "Michroma", system-ui, sans-serif;
   --fuente2: "Manrope", system-ui, sans-serif;
 }
-
 
 /* BASE */
 *, *::before, *::after { box-sizing: border-box; }
@@ -37,97 +39,130 @@ body {
   display: grid;
   place-items: center;        /* centra el logo */
   position: relative;
-  overflow: hidden;           /* oculta la luna mientras está "abajo" */
+  overflow: hidden;
   z-index: 1;
 }
 
 /*fondo de video*/
 .video-fondo {
   position: fixed;          /*consultar*/
-  inset: 0;               /*consultar*/
+  inset: 0;                 /*consultar*/
   width: 100%;
   height: 100%;
-  object-fit: cover;       /*consultar*/
+  object-fit: cover;        /*consultar*/
   z-index: -1;
 }
 
+/* ===== MENÚ (celular primero) ===== */
 .btn-menu {
   position: absolute;
   top: 1.25rem;
   left: 1.25rem;
-  
+
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   padding: 0;
   margin: 0;
-  border: 2px solid silver;
+  border: 1px solid var(--tinta);
   background: transparent;
-  color: silver;
+  color: var(--tinta);
   font-size: 20px;
   font-family: var(--fuente);
-  font-weight: 500;
-  
-  cursor: pointer;           /*consultar*/   
-  transition: all 0.3s ease;
+
+  cursor: pointer;                  /*consultar*/
+  transition: transform 0.3s ease;
   z-index: 3;
 }
 
 .btn-menu:hover {
-  transform: scale(1.1);           /*consultar*/
+  transform: scale(1.1);            /*consultar*/
 }
 
-.btn-menu:focus-visible {         /*consultar*/
+.btn-menu:focus-visible {           /*consultar*/
   outline: 3px solid var(--acento);
   outline-offset: 3px;
 }
-.btn-menu:focus-visible { outline: 3px solid var(--acento); outline-offset: 3px; }
 
+/* Panel desplegable: fondo oscuro translúcido, no una píldora plateada */
 #menu {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center ;
   position: absolute;
   z-index: 2;
-  top: 1.25rem;
+  top: 5rem;
   left: 1.25rem;
-  width: 95%;
-  height: 50px;
-  background: silver;
-  transform: translateX(-100%);
+  right: 1.25rem;
+
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+
+  background: rgb(19 19 19 / 85%);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+
+  opacity: 0;
+  transform: translateY(-10px);
   visibility: hidden;
-  transition: transform 1.8s ease, visibility 0.4s;
-  border-radius: 25px;
-  font-size: clamp(0.8rem, 2vw, .7rem);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
 
 #menu.abierto {
-  transform: translateX(0);
+  opacity: 1;
+  transform: translateY(0);
   visibility: visible;
 }
 
-.btn-menu[aria-expanded="true"] {
-  color: #131313;
+#menu a {
+  display: block;
+  padding: 0.9rem 1rem;
+  color: var(--tinta);
+  text-decoration: none;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: opacity 0.2s ease;
 }
 
-  #menu a {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 8px;
-    color: black;
-    text-decoration: none;
+#menu a:hover,
+#menu a:focus-visible {
+  opacity: 0.6;
+}
+
+/* ===== MENÚ en escritorio: barra superior, sin botón ===== */
+@media (min-width: 768px) {
+  .btn-menu {
+    display: none;
   }
 
-  #menu a:hover {
-    background: rgb(255 255 255 / 12%);
+  #menu {
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2.5rem;
+
+    background: none;
+    backdrop-filter: none;
+    border-radius: 0;
+
+    transform: none;
+    visibility: visible;
+    opacity: 0;               /* aparece con la animación de entrada */
+    transition: none;
   }
+
+  #menu a {
+    padding: 0.5rem 0;
+  }
+}
 
 .marca {
   display: flex;
@@ -140,7 +175,6 @@ body {
 .logo {
   width: clamp(140px, 32vw, 300px);
   height: auto;
-  fill: var(--tinta);
 }
 
 .nombre {
@@ -164,10 +198,16 @@ body {
 }
 
 .listo .btn-menu {
-  animation: aparece 0.8s ease-out 1.8s forwards;     /* el menú aparece al final */
+  animation: aparece 0.8s ease-out 1.8s forwards;       /* el menú aparece al final */
 }
 
-/* La luna sube desde abajo y gira un poco (como en las flechas del boceto) */
+@media (min-width: 768px) {
+  .listo #menu {
+    animation: aparece 0.8s ease-out 1.8s forwards;     /* la barra entra junto al final */
+  }
+}
+
+/* La luna sube desde abajo y gira un poco */
 @keyframes sube-luna {
   from { opacity: 0; transform: translateY(70vh) rotate(100deg); }
   to   { opacity: 1; transform: translateY(0)    rotate(0deg); }
@@ -186,7 +226,7 @@ body {
 
 /* Accesibilidad: si la persona pidió menos movimiento, no animamos */
 @media (prefers-reduced-motion: reduce) {
-  .listo .logo, .listo .nombre, .listo .btn-menu {
+  .listo .logo, .listo .nombre, .listo .btn-menu, .listo #menu {
     animation: aparece .3s forwards;
     animation-delay: 0s;
   }
@@ -215,8 +255,6 @@ main {
   max-width: 600px;
   border-radius: 5px;
   background-color: #131313;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  text-decoration: none;
   font-family: var(--fuente2);
   padding: 8px;
 }
@@ -226,7 +264,6 @@ main {
   color: #000000;
   border: none;
   padding: 10px 20px;
-  text-decoration: none;
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
