@@ -3,13 +3,21 @@
   font-family: "Michroma";
   src: url("../font/Michroma-Regular.ttf") format("truetype");
 }
+
+@font-face {
+  font-family: "Manrope";
+  src: url("../font/Manrope-VariableFont_wght.ttf") format("truetype");
+  font-display: swap;
+}
+
 /*  variable en la pagina */
 :root {
-  --fondo: #131313;            /* color de fondo */
+  --fondo: #131313;        /* color de fondo */
   --tinta: #d6dcea;        /* color del logo y del texto */
   --tinta2: #212123;
-  --acento:   #8a8a8a;
+  --acento: #3a6ea5;
   --fuente: "Michroma", system-ui, sans-serif;
+  --fuente2: "Manrope", system-ui, sans-serif;
 }
 
 
@@ -47,110 +55,130 @@ body {
   object-fit: cover;       /*consultar*/
   z-index: -1;
 }
-
-.btn-menu {
+/* ===== NAV estilo BSWT ===== */
+.nav {
   position: absolute;
-  top: 1.25rem;
-  left: 1.25rem;
-  
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  padding: 0;
-  margin: 0;
-  border: 2px solid silver
-  ;
-  background: transparent;
-  color: silver;
-  font-size: 20px;
-  font-family: var(--fuente);
-  font-weight: 500;
-  
-  cursor: pointer;           /*consultar*/   
-  transition: all 0.3s ease;
-  z-index: 3;
-}
-
-.btn-menu:hover {
-  transform: scale(1.1);           /*consultar*/
-}
-
-.btn-menu:focus-visible {         /*consultar*/
-  outline: 3px solid var(--acento);
-  outline-offset: 3px;
-}
-.btn-menu:focus-visible { outline: 3px solid var(--acento); outline-offset: 3px; }
-
-#menu {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center ;
-  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 2;
-  top: 1.25rem;
-  left: 1.25rem;
-  width: 95%;
-  height: 50px;
-  background: silver;
-  transform: translateX(-100%);
-  visibility: hidden;
-  transition: transform 1.8s ease, visibility 0.4s;
-  border-radius: 25px;
-  font-size: clamp(0.8rem, 2vw, .7rem);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 1.5rem 2.5rem;
+  opacity: 0;                       /* aparece con la animación */
 }
 
-#menu.abierto {
-  transform: translateX(0);
-  visibility: visible;
+.nav-izq,
+.nav-der { display: flex; gap: 2.5rem; }
+.nav-der { justify-content: flex-end; }
+
+.nav a {
+  color: var(--tinta);
+  text-decoration: none;
+  font-family: var(--fuente2);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: opacity 0.2s ease;
 }
 
-.btn-menu[aria-expanded="true"] {
-  color: #131313;
+.nav a:hover,
+.nav a:focus-visible { opacity: 0.6; }
+
+.nav-logo img { display: block; width: 28px; height: auto; }
+
+.listo .nav { animation: aparece 0.001s ease-out 0.001s forwards; }
+
+/* Celular: logo arriba, links en una fila debajo */
+@media (max-width: 600px) {
+  .nav { grid-template-columns: 1fr 1fr; padding: 1rem 1.25rem; row-gap: 1rem; }
+  .nav-logo { grid-column: 1 / -1; grid-row: 1; justify-self: center; }
+  .nav-izq, .nav-der { gap: 1rem; }
+  .nav a { font-size: 0.65rem; letter-spacing: 0.1em; }
 }
 
-  #menu a {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 8px;
-    color: black;
-    text-decoration: none;
+.marca {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* clamp(mínimo, ideal, máximo): el tamaño crece con la pantalla pero con límites */
+.logo {
+  width: clamp(96px, 22vw, 206px);
+  height: auto;
+}
+
+.nombre {
+  margin: 0;
+  font-weight: 200;
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  letter-spacing: .08em;
+}
+
+/* ===== 4. ANIMACIÓN DE ENTRADA ===== */
+/* Estado inicial: todo escondido hasta que JS agrega la clase "listo" al <body> */
+.logo, .nombre { opacity: 0; }
+
+.listo .logo {
+  animation: sube-luna 1.4s cubic-bezier(.22, 1, .36, 1) forwards;
+  transform-origin: 50% 60%;
+}
+
+.listo .nombre {
+  animation: aparece-texto 0.5s ease-out 1s forwards;   /* espera 1s a que la luna llegue */
+}
+
+
+
+
+/* La luna sube desde abajo y gira un poco */
+@keyframes sube-luna {
+  from { opacity: 0; transform: translateY(70vh) rotate(100deg); }
+  to   { opacity: 1; transform: translateY(0)    rotate(0deg); }
+}
+
+/* El nombre aparece y las letras se "cierran" a su espacio final */
+@keyframes aparece-texto {
+  from { opacity: 0; letter-spacing: .4em; }
+  to   { opacity: 1; letter-spacing: .05em; }
+}
+
+@keyframes aparece {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Accesibilidad: si la persona pidió menos movimiento, no animamos */
+@media (prefers-reduced-motion: reduce) {
+  .listo .logo, .listo .nombre {
+    animation: aparece .3s forwards;
+    animation-delay: 0s;
   }
-
-  #menu a:hover {
-    background: rgb(255 255 255 / 12%);
-  }
-
-.listo .btn-menu {
-  animation: aparece 0.8s ease-out 1.8s forwards;     /* el menú aparece al final */
 }
-
 
 footer {
   text-align: center;
   padding: 1rem;
   font-size: 0.8rem;
-  color: var(--tinta2);
-  background: #fff;
+  color: var(--tinta);
+  background: #212121;
 }
 
 main {
   display: flex;
   flex-wrap: wrap;
-  align-items: space-around;
+  justify-content: space-around;
   z-index: 1;
   padding: 60px;
   min-height: 100vh;          /* ocupa toda la pantalla */
   min-height: 100svh;  
 }
 
-.debug {
+.card {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -159,63 +187,31 @@ main {
   padding: 5px;
   font-size: 12px;
   z-index: 9999;
-  width: 28vw;
+  width: 21vw;
+  height: 70vh;
   margin:auto;
   border-radius: 5px;
 }
 
-.crear {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  background: var(--fondo);
-  color: #fff;
-  padding: 5px;
-  font-size: 12px;
-  z-index: 9999;
-  width: 30vw;
-  margin:auto;
-  border-radius: 5px;
-}
-
-.mantenimiento {
-  background: var(--fondo);
-  color: #fff;
-  padding: 5px;
-  font-size: 12px;
-  z-index: 9999;
-  width: 28vw;
-  margin:auto;
-}
 
 img {
   max-width: 15vw;
   height: auto;
 }
 
-.debug p {
-  font-size: 22px;
-  text-align: justify;
-}
 
-.debug h2 {
-  font-size: 38px;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.crear p {
+.card p {
   font-size: 26px;
   text-align: justify;
 }
 
-.crear h2 {
+.card h2 {
   font-size: 46px;
   text-align: center;
   margin-bottom: 10px;
 }
 
-div {
+.card {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -226,14 +222,14 @@ div {
   z-index: 2;
 }
 
-div:hover {
+.card:hover {
   transform: scale(1.1);
   transition: transform 0.3s ease;
   z-index: 2;
-  background-color: rgb(43, 43, 42);
+  background-color: var(--tinta2);
 }
 
-div button {
+.card button {
   border-radius: 5px;
   font-family: var(--fuente);
   padding: 10px 20px;
@@ -241,13 +237,12 @@ div button {
   cursor: pointer;
 }
 
-.mantenimiento p {
-  font-size: 22px;
-  text-align: justify;
-}
 
-.mantenimiento h2 {
-  font-size: 38px;
+
+.title {
   text-align: center;
-  margin-bottom: 10px;
+  font-size: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-family: var(--fuente);
 }

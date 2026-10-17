@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -13,44 +14,58 @@
   </video>
 
   <!-- 1. INICIO (hero) -->
-  <header class="inicio" id="inicio">
+ <header class="inicio" id="inicio">
+    <nav class="nav" aria-label="Menú principal">
+  <div class="nav-izq">
+    <a href="servicios.html">Servicios</a>
+    <a href="../nosotros/nosotros.html">Nosotros</a>
+  </div>
+  <a class="nav-logo" href="../index.html">
+    <img src="../imagenes/logo.png" alt="Arsidev, inicio">
+  </a>
+  <div class="nav-der">
+    <a href="../proyectos/proyectos.html">Proyectos</a>
+    <a href="../contacto/contacto.html">Contacto</a>
+  </div>
+</nav>
     
 
-        <button id="btn-menu" class="btn-menu" type="button" aria-expanded="false" aria-controls="menu">☰</button>
-      <nav id="menu" aria-label="Menú principal" aria-hidden="true">
-      <a href="../index.html">Inicio</a>
-      <a href="../servicios/servicios.html">Servicios</a>
-      <a href="../nosotros/nosotros.html">Nosotros</a>
-      <a href="../inicio_sesion/iniciosesion.html">Iniciar sesión</a>
-      <a href="../contacto/contacto.html">Contacto</a>
-    </nav>
-    
-<h1>Servicios</h1>
   </header>
-   
+  <h1 class="title">Servicios</h1>
   <main>
-    <div class="debug">
-      <img src="../imagenes/bug.png" alt="Debug" class="debug-image">
-      <section class="debug-text">
-        <h2>Debug</h2>
-        <p>Identificamos y solucionamos errores en tu software para garantizar un rendimiento óptimo y una experiencia de usuario sin problemas.</p>
-        <button class="servicios" onclick="window.location.href='debug/debug.html'">Ver más</button>
-      </section>
-    </div>
-
-    <div class="crear">
+    <div class="card">
       <img src="../imagenes/crear.png" alt="Crear" class="crear-image">
       <section class="crear-text">
         <h2>Crear</h2>
-        <p>Desarrollamos soluciones personalizadas que se adaptan a las necesidades de tu negocio, desde aplicaciones web hasta sistemas complejos.</p>
+        <p>Desarrollamos soluciones personalizadas que se adaptan a las necesidades de tu negocio.</p>
         <button class="servicios" onclick="window.location.href='crear/crear.html'">Ver más</button>
       </section>
     </div>
 
-    <div class="mantenimiento">
+    <div class="card">
+      <img src="../imagenes/bug.png" alt="Debug" class="debug-image">
+      <section class="debug-text">
+        <h2>Debug</h2>
+        <p>Identificamos y solucionamos errores en tu software.</p>
+        <button class="servicios" onclick="window.location.href='debug/debug.html'">Ver más</button>
+      </section>
+    </div>
+
+    
+
+    <div class="card">
         <img src="../imagenes/mantenimiento.png" alt="Mantenimiento" class="mantenimiento-image">
         <section class="mantenimiento-text">
-          <h2>Mantenimiento</h2>
+          <h2>Manto</h2>
+          <p>Ofrecemos servicios de mantenimiento continuo para tu software.</p>
+          <button class="servicios" onclick="window.location.href='mantenimiento/mantenimiento.html'">Ver más</button>
+        </section>
+    </div>
+
+    <div class="card">
+        <img src="../imagenes/mantenimiento.png" alt="Mantenimiento" class="mantenimiento-image">
+        <section class="mantenimiento-text">
+          <h2>Manto</h2>
           <p>Ofrecemos servicios de mantenimiento continuo para asegurar que tu software y sistemas funcionen sin interrupciones y estén siempre actualizados.</p>
           <button class="servicios" onclick="window.location.href='mantenimiento/mantenimiento.html'">Ver más</button>
         </section>
@@ -60,7 +75,6 @@
   <footer>
     <p>&copy; 2026 Arsidev. Todos los derechos reservados.</p>
   </footer>
-
-  <script src="../js/menu.js"></script>
+  <script src="../js/main.js"></script>
 </body>
 </html> 

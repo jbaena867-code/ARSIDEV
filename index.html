@@ -15,24 +15,42 @@
 
   <!-- 1. INICIO (hero) -->
   <header class="inicio" id="inicio">
-    
+    <nav class="nav" aria-label="Menú principal">
+  <div class="nav-izq">
+    <a href="servicios/servicios.html">Servicios</a>
+    <a href="nosotros/nosotros.html">Nosotros</a>
+  </div>
+  <a class="nav-logo" href="./index.html">
+    <img src="imagenes/logo.png" alt="Arsidev, inicio">
+  </a>
+  <div class="nav-der">
+    <a href="proyectos/proyectos.html">Proyectos</a>
+    <a href="contacto/contacto.html">Contacto</a>
+  </div>
+</nav>
 
-    <button id="btn-menu" class="btn-menu" type="button" aria-expanded="false" aria-controls="menu">☰</button>
-      <nav id="menu" aria-label="Menú principal">
-      <a href="./index.html">Inicio</a>
-      <a href="servicios/servicios.html">Servicios</a>
-      <a href="nosotros/nosotros.html">Nosotros</a>
-      <a href="inicio_sesion/iniciosesion.html">Iniciar sesión</a>
-      <a href="contacto/contacto.html">Contacto</a>
-    </nav>
-    
+<div class="hero">
+  <ul class="lista">
+    <li>Creación de Sitios web</li>
+    <li>Creación base de datos</li>
+    <li>Diseño de interfaces <br> e idedtidad de marca</li>
+  </ul>
 
-    <div class="marca">
-      <!-- Logo: luna creciente dibujada en SVG (se ve nítida en cualquier tamaño) -->
+  <div class="marca">
+      <!-- Logo-->
        <img class="logo" src="imagenes/logo.png" alt="Logo de Arsidev">
 
       <h1 class="nombre">Arsidev</h1>
     </div>
+
+  <ul class="lista">
+    <li>Debug de Sitios web</li>
+    <li>Mantenimiento de datos</li>
+    <li>Rediseño de canales digitales</li>
+  </ul>
+</div>
+
+    
 
   </header>
    
@@ -42,8 +60,7 @@
       <p>
         Diseñamos y desarrollamos software y sitios web a la medida: 
         rápidos, seguros y pensados para convertir visitantes en clientes. 
-        Desde la idea hasta el lanzamiento, trabajamos contigo en cada paso
-         para que tu marca destaque donde importa.
+        Desde la idea hasta el lanzamiento.
         </p>
         <button class="servicios" onclick="window.location.href='servicios/servicios.html'">Servicios</button>
     </div>
@@ -53,6 +70,5 @@
   </footer>
 
   <script src="js/main.js"></script>
-  <script src="js/menu.js"></script>
 </body>
 </html>

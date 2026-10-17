@@ -10,6 +10,12 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Notosans";
+  src: url("../font/Notosans.ttf") format("truetype");
+  font-display: swap;
+}
+
 /*  variable en la pagina */
 :root {
   --fondo: #131313;        /* color de fondo */
@@ -18,6 +24,7 @@
   --acento: #3a6ea5;
   --fuente: "Michroma", system-ui, sans-serif;
   --fuente2: "Manrope", system-ui, sans-serif;
+  --fuente3: "Notosans", system-ui, sans-serif;
 }
 
 /* BASE */
@@ -34,6 +41,10 @@ body {
 
 /* ===== 3. INICIO ===== */
 .inicio {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
   min-height: 100vh;          /* ocupa toda la pantalla */
   min-height: 100svh;         /* mejor en celulares */
   display: grid;
@@ -53,115 +64,48 @@ body {
   z-index: -1;
 }
 
-/* ===== MENÚ (celular primero) ===== */
-.btn-menu {
+/* ===== NAV estilo BSWT ===== */
+.nav {
   position: absolute;
-  top: 1.25rem;
-  left: 1.25rem;
-
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0;
-  margin: 0;
-  border: 1px solid var(--tinta);
-  background: transparent;
-  color: var(--tinta);
-  font-size: 20px;
-  font-family: var(--fuente);
-
-  cursor: pointer;                  /*consultar*/
-  transition: transform 0.3s ease;
-  z-index: 3;
-}
-
-.btn-menu:hover {
-  transform: scale(1.1);            /*consultar*/
-}
-
-.btn-menu:focus-visible {           /*consultar*/
-  outline: 3px solid var(--acento);
-  outline-offset: 3px;
-}
-
-/* Panel desplegable: fondo oscuro translúcido, no una píldora plateada */
-#menu {
-  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 2;
-  top: 5rem;
-  left: 1.25rem;
-  right: 1.25rem;
-
-  display: flex;
-  flex-direction: column;
-  padding: 0.5rem;
-
-  background: rgb(19 19 19 / 85%);
-  backdrop-filter: blur(8px);
-  border-radius: 16px;
-
-  opacity: 0;
-  transform: translateY(-10px);
-  visibility: hidden;
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 1.5rem 2.5rem;
+  opacity: 0;                       /* aparece con la animación */
 }
 
-#menu.abierto {
-  opacity: 1;
-  transform: translateY(0);
-  visibility: visible;
-}
+.nav-izq,
+.nav-der { display: flex; gap: 2.5rem; }
+.nav-der { justify-content: flex-end; }
 
-#menu a {
-  display: block;
-  padding: 0.9rem 1rem;
+.nav a {
   color: var(--tinta);
   text-decoration: none;
+  font-family: var(--fuente2);
   font-size: 0.75rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   transition: opacity 0.2s ease;
 }
 
-#menu a:hover,
-#menu a:focus-visible {
-  opacity: 0.6;
-}
+.nav a:hover,
+.nav a:focus-visible { opacity: 0.6; }
 
-/* ===== MENÚ en escritorio: barra superior, sin botón ===== */
-@media (min-width: 768px) {
-  .btn-menu {
-    display: none;
-  }
+.nav-logo img { display: block; width: 48px; height: auto; }
 
-  #menu {
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 2.5rem;
+.listo .nav { animation: aparece 0.8s ease-out 1.8s forwards; }
 
-    background: none;
-    backdrop-filter: none;
-    border-radius: 0;
-
-    transform: none;
-    visibility: visible;
-    opacity: 0;               /* aparece con la animación de entrada */
-    transition: none;
-  }
-
-  #menu a {
-    padding: 0.5rem 0;
-  }
+/* Celular: logo arriba, links en una fila debajo */
+@media (max-width: 600px) {
+  .nav { grid-template-columns: 1fr 1fr; padding: 1rem 1.25rem; row-gap: 1rem; }
+  .nav-logo { grid-column: 1 / -1; grid-row: 1; justify-self: center; }
+  .nav-izq, .nav-der { gap: 1rem; }
+  .nav a { font-size: 0.65rem; letter-spacing: 0.1em; }
 }
 
 .marca {
@@ -173,20 +117,20 @@ body {
 
 /* clamp(mínimo, ideal, máximo): el tamaño crece con la pantalla pero con límites */
 .logo {
-  width: clamp(140px, 32vw, 300px);
+  width: clamp(96px, 22vw, 206px);
   height: auto;
 }
 
 .nombre {
   margin: 0;
   font-weight: 200;
-  font-size: clamp(2.2rem, 7vw, 4.5rem);
+  font-size: clamp(1.5rem, 5vw, 3rem);
   letter-spacing: .08em;
 }
 
 /* ===== 4. ANIMACIÓN DE ENTRADA ===== */
 /* Estado inicial: todo escondido hasta que JS agrega la clase "listo" al <body> */
-.logo, .nombre, .btn-menu { opacity: 0; }
+.logo, .nombre { opacity: 0; }
 
 .listo .logo {
   animation: sube-luna 1.4s cubic-bezier(.22, 1, .36, 1) forwards;
@@ -197,15 +141,8 @@ body {
   animation: aparece-texto 0.5s ease-out 1s forwards;   /* espera 1s a que la luna llegue */
 }
 
-.listo .btn-menu {
-  animation: aparece 0.8s ease-out 1.8s forwards;       /* el menú aparece al final */
-}
 
-@media (min-width: 768px) {
-  .listo #menu {
-    animation: aparece 0.8s ease-out 1.8s forwards;     /* la barra entra junto al final */
-  }
-}
+
 
 /* La luna sube desde abajo y gira un poco */
 @keyframes sube-luna {
@@ -236,8 +173,8 @@ footer {
   text-align: center;
   padding: 1rem;
   font-size: 0.8rem;
-  color: var(--tinta2);
-  background: #fff;
+  color: var(--tinta);
+  background: #212121;
 }
 
 main {
@@ -268,3 +205,38 @@ main {
   cursor: pointer;
   border-radius: 5px;
 }
+
+.start a{
+  font-family: var(--fuente);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  width: 100%;
+  padding: 0 2.5rem;
+}
+
+.lista {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lista li {
+  font-family: var(--fuente2);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.4rem 0;
+}
+
+.lista li { opacity: 0.35; transition: opacity 0.2s ease; }
+.lista:hover li { opacity: 0.175; }
+.lista li:hover { opacity: 1; }

@@ -3,55 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Arsidev</title>
+  <title>Arsidev - Contacto</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/styleservices.css">
 </head>
 <body>
   <video class="video-fondo" autoplay muted loop playsinline>
-      <source src="../imagenes/Video Project.mp4" type="video/mp4">
+    <source src="../imagenes/Video Project.mp4" type="video/mp4">
   </video>
 
-  <!-- 1. INICIO (hero) -->
   <header class="inicio" id="inicio">
-    
-
-    <button id="btn-menu" class="btn-menu" type="button" aria-expanded="false" aria-controls="menu">☰</button>
-      <nav id="menu" aria-label="Menú principal" aria-hidden="true">
-      <a href="../index.html">Inicio</a>
-      <a href="../servicios/servicios.html">Servicios</a>
-      <a href="../nosotros/nosotros.html">Nosotros</a>
-      <a href="../inicio_sesion/iniciosesion.html">Iniciar sesión</a>
-      <a href="../contacto/contacto.html">Contacto</a>
+    <nav class="nav" aria-label="Menú principal">
+      <div class="nav-izq">
+        <a href="../servicios/servicios.html">Servicios</a>
+        <a href="../nosotros/nosotros.html">Nosotros</a>
+      </div>
+      <a class="nav-logo" href="../index.html">
+        <img src="../imagenes/logo.png" alt="Arsidev, inicio">
+      </a>
+      <div class="nav-der">
+        <a href="../proyectos/proyectos.html">Proyectos</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
     </nav>
-    
-
-    <div class="marca">
-       <img class="logo" src="../imagenes/logo.png" alt="Logo de Arsidev">
-
-      <h1 class="nombre">Arsidev</h1>
-    </div>
-
   </header>
-   
+
+  <h1 class="title">Contacto</h1>
+
   <main>
-    <div id="mensaje" class="mensaje">
-      <h2><strong>¿Te gusta lo que ves? Tu negocio puede lucir igual.</strong></h2>
-      <p>
-        Diseñamos y desarrollamos software y sitios web a la medida: 
-        rápidos, seguros y pensados para convertir visitantes en clientes. 
-        Desde la idea hasta el lanzamiento, trabajamos contigo en cada paso
-         para que tu marca destaque donde importa.
-        </p>
-        <button class="servicios" onclick="window.location.href='../servicios/servicios.html'">Servicios</button>
-    </div>
+    <!-- EDITA: el texto de arriba del formulario -->
+    <form class="formulario" action="#" method="post">
+      <p>Cuéntanos qué necesitas y te respondemos pronto.</p>
+
+      <label for="nombre">Nombre</label>
+      <input id="nombre" name="nombre" type="text" required>
+
+      <label for="correo">Correo</label>
+      <input id="correo" name="correo" type="email" required>
+
+      <label for="mensaje">Mensaje</label>
+      <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+      <button type="submit">Enviar</button>
+    </form>
   </main>
+
   <footer>
     <p>&copy; 2026 Arsidev. Todos los derechos reservados.</p>
   </footer>
-
   <script src="../js/main.js"></script>
-  <script src="../js/menu.js"></script>
 </body>
 </html>
