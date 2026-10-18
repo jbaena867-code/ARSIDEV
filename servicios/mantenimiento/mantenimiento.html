@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -9,21 +10,62 @@
 </head>
 <body>
   <video class="video-fondo" autoplay muted loop playsinline>
-      <source src="../../imagenes/Video Project.mp4" type="video/mp4">
+    <source src="../../imagenes/Video Project.mp4" type="video/mp4">
   </video>
 
-  <!-- 1. INICIO (hero) -->
   <header class="inicio" id="inicio">
-    
-
-    <button id="btn-menu" class="btn-menu" type="button" aria-expanded="false" aria-controls="menu">☰</button>
-      <nav id="menu" aria-label="Menú principal" aria-hidden="true">
-      <a href="../../index.html">Inicio</a>
-      <a href="../../servicios.html">Servicios</a>
-      <a href="../../nosotros.html">Nosotros</a>
+    <nav class="nav" aria-label="Menú principal">
+      <div class="nav-izq">
+        <a href="../../servicios/servicios.html">Servicios</a>
+        <a href="../../nosotros/nosotros.html">Nosotros</a>
+      </div>
+      <a class="nav-logo" href="../../index.html">
+        <img src="../../imagenes/logo.png" alt="Arsidev, inicio">
+      </a>
+      <div class="nav-der">
+        <a href="../../proyectos/proyectos.html">Proyectos</a>
+        <a href="../../contacto/contacto.html">Contacto</a>
+      </div>
     </nav>
-<h1>Servicios</h1>
   </header>
-  <script src="../../js/menu.js"></script>
+
+  <h1 class="title">Mantenimiento</h1>
+
+  <div class="lunas" aria-hidden="true">
+  <span class="luna"></span>
+  <span class="luna l2"></span>
+  <span class="luna l3"></span>
+  <span class="luna l4"></span>
+  <span class="luna l5"></span>
+  </div>
+
+  <main>
+    <section class="detalle">
+      <!-- EDITA: descripción del servicio -->
+      <p>Mantenemos tu software al día y funcionando para que no tengas que preocuparte.</p>
+
+      <h2>Qué incluye</h2>
+      <ul>
+        <li>Actualizaciones</li>
+        <li>Copias de seguridad</li>
+        <li>Soporte continuo</li>
+      </ul>
+
+      <h2>Cómo trabajamos</h2>
+      <ol>
+        <li>Hablamos y entendemos lo que necesitas</li>
+        <li>Te enviamos una propuesta</li>
+        <li>Lo desarrollamos contigo paso a paso</li>
+        <li>Lo entregamos y damos seguimiento</li>
+      </ol>
+
+      <button onclick="window.location.href='../../contacto/contacto.html'">Hablemos</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Arsidev. Todos los derechos reservados.</p>
+  </footer>
+  <script src="../../js/main.js"></script>
 </body>
 </html>

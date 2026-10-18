@@ -187,9 +187,9 @@ main {
   padding: 5px;
   font-size: 12px;
   z-index: 9999;
-  width: 21vw;
+  width: 35vw;
   height: 70vh;
-  margin:auto;
+  margin: 50px;
   border-radius: 5px;
 }
 
@@ -197,12 +197,13 @@ main {
 img {
   max-width: 15vw;
   height: auto;
+  
 }
 
 
 .card p {
   font-size: 26px;
-  text-align: justify;
+  text-align: center;
 }
 
 .card h2 {
@@ -235,9 +236,10 @@ img {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
+  display: block;
+  margin: 1.5rem auto 0;
+  
 }
-
-
 
 .title {
   text-align: center;
@@ -246,3 +248,131 @@ img {
   margin-bottom: 2rem;
   font-family: var(--fuente);
 }
+
+.detalle {
+  width: min(90vw, 700px);
+  margin: auto;
+  font-family: var(--fuente2);
+  line-height: 1.7;
+}
+
+.detalle h2 {
+  font-family: var(--fuente);
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+.detalle li {
+  margin-bottom: 0.5rem;
+}
+
+.detalle button {
+  margin-top: 2rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-family: var(--fuente);
+  cursor: pointer;
+}
+
+.equipo {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.lunas {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.luna {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--tinta);
+  border-radius: 50%;
+}
+
+.luna.l2 { box-shadow: inset -3px 0 0 var(--tinta); }
+.luna.l3 { box-shadow: inset -5px 0 0 var(--tinta); }
+.luna.l4 { box-shadow: inset -8px 0 0 var(--tinta); }
+.luna.l5 { background: var(--tinta); }
+
+.luna { opacity: 0; }
+
+.listo .luna {
+  animation: aparece 0.6s ease-out forwards;
+}
+
+.listo .luna:nth-child(1) { animation-delay: 0.2s; }
+.listo .luna:nth-child(2) { animation-delay: 0.4s; }
+.listo .luna:nth-child(3) { animation-delay: 0.6s; }
+.listo .luna:nth-child(4) { animation-delay: 0.8s; }
+.listo .luna:nth-child(5) { animation-delay: 1s; }
+
+.formulario {
+  width: min(90vw, 500px);
+  margin: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-family: var(--fuente2);
+  background: rgb(19 19 19 / 80%);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgb(214 220 234 / 15%);
+  border-radius: 5px;
+}
+
+.formulario label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.formulario input,
+.formulario textarea {
+  width: 100%;
+  padding: 0.7rem;
+  background: transparent;
+  color: var(--tinta);
+  border: 1px solid rgb(214 220 234 / 20%);
+  border-radius: 5px;
+  font-family: var(--fuente2);
+}
+
+.formulario input:focus,
+.formulario textarea:focus {
+  outline: none;
+  border-color: var(--acento);
+}
+
+.formulario textarea { resize: vertical; }
+
+.formulario button {
+  align-self: flex-start;
+  padding: 10px 20px;
+  background: transparent;
+  color: var(--tinta);
+  border: 1px solid var(--tinta);
+  border-radius: 5px;
+  font-family: var(--fuente2);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.formulario button:hover { opacity: 0.6; }
+
+
+.card .team {
+  width: 15vw;
+  height: 15vw;
+  object-fit: contain;
+} 

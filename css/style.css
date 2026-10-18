@@ -123,14 +123,50 @@ body {
 
 .nombre {
   margin: 0;
-  font-weight: 200;
-  font-size: clamp(1.5rem, 5vw, 3rem);
-  letter-spacing: .08em;
+  width: 20vw;
+  height: auto;
 }
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  width: 100%;
+  padding: 0 2.5rem;
+}
+
+.lista {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lista li {
+  font-family: var(--fuente2);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.4rem 0;
+}
+
+.lista li { opacity: 0.35; transition: opacity 0.2s ease; }
+.lista:hover li { opacity: 0.175; }
+.lista li:hover { opacity: 1; }
+
+.lista a {
+  color: inherit;
+  text-decoration: none;
+}
+
 
 /* ===== 4. ANIMACIÓN DE ENTRADA ===== */
 /* Estado inicial: todo escondido hasta que JS agrega la clase "listo" al <body> */
-.logo, .nombre { opacity: 0; }
+.logo, .nombre, .lista { opacity: 0; }
 
 .listo .logo {
   animation: sube-luna 1.4s cubic-bezier(.22, 1, .36, 1) forwards;
@@ -139,6 +175,10 @@ body {
 
 .listo .nombre {
   animation: aparece-texto 0.5s ease-out 1s forwards;   /* espera 1s a que la luna llegue */
+}
+
+.listo .lista {
+  animation: aparecen-listas 0.5s ease 1s forwards;
 }
 
 
@@ -152,13 +192,18 @@ body {
 
 /* El nombre aparece y las letras se "cierran" a su espacio final */
 @keyframes aparece-texto {
-  from { opacity: 0; letter-spacing: .4em; }
-  to   { opacity: 1; letter-spacing: .05em; }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 @keyframes aparece {
   from { opacity: 0; }
   to   { opacity: 1; }
+}
+
+@keyframes aparecen-listas {
+  from {opacity: 0;}
+  to {opacity: 1}
 }
 
 /* Accesibilidad: si la persona pidió menos movimiento, no animamos */
@@ -210,33 +255,89 @@ main {
   font-family: var(--fuente);
 }
 
-.hero {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  width: 100%;
-  padding: 0 2.5rem;
-}
-
-.lista {
+.lunas {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
-.lista li {
+.luna {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--tinta);
+  border-radius: 50%;
+}
+
+.luna.l2 { box-shadow: inset -3px 0 0 var(--tinta); }
+.luna.l3 { box-shadow: inset -5px 0 0 var(--tinta); }
+.luna.l4 { box-shadow: inset -8px 0 0 var(--tinta); }
+.luna.l5 { background: var(--tinta); }
+
+.luna { opacity: 0; }
+
+.listo .luna {
+  animation: aparece 0.6s ease-out forwards;
+}
+
+.listo .luna:nth-child(1) { animation-delay: 0.2s; }
+.listo .luna:nth-child(2) { animation-delay: 0.4s; }
+.listo .luna:nth-child(3) { animation-delay: 0.6s; }
+.listo .luna:nth-child(4) { animation-delay: 0.8s; }
+.listo .luna:nth-child(5) { animation-delay: 1s; }
+
+.formulario {
+  width: min(90vw, 500px);
+  margin: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   font-family: var(--fuente2);
+  background: rgb(19 19 19 / 80%);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgb(214 220 234 / 15%);
+  border-radius: 5px;
+}
+
+.formulario label {
   font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  padding: 0.4rem 0;
+  letter-spacing: 0.1em;
 }
 
-.lista li { opacity: 0.35; transition: opacity 0.2s ease; }
-.lista:hover li { opacity: 0.175; }
-.lista li:hover { opacity: 1; }
+.formulario input,
+.formulario textarea {
+  width: 100%;
+  padding: 0.7rem;
+  background: transparent;
+  color: var(--tinta);
+  border: 1px solid rgb(214 220 234 / 20%);
+  border-radius: 5px;
+  font-family: var(--fuente2);
+}
+
+.formulario input:focus,
+.formulario textarea:focus {
+  outline: none;
+  border-color: var(--acento);
+}
+
+.formulario textarea { resize: vertical; }
+
+.formulario button {
+  align-self: flex-start;
+  padding: 10px 20px;
+  background: transparent;
+  color: var(--tinta);
+  border: 1px solid var(--tinta);
+  border-radius: 5px;
+  font-family: var(--fuente2);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.formulario button:hover { opacity: 0.6; }

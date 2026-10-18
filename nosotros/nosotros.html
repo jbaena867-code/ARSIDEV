@@ -1,66 +1,83 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Arsidev - Servicios</title>
+  <title>Arsidev - Nosotros</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="../css/styleservices.css">
 </head>
 <body>
   <video class="video-fondo" autoplay muted loop playsinline>
-      <source src="../imagenes/Video Project.mp4" type="video/mp4">
+    <source src="../imagenes/Video Project.mp4" type="video/mp4">
   </video>
 
-  <!-- 1. INICIO (hero) -->
   <header class="inicio" id="inicio">
-    
-
-        <button id="btn-menu" class="btn-menu" type="button" aria-expanded="false" aria-controls="menu">☰</button>
-      <nav id="menu" aria-label="Menú principal" aria-hidden="true">
-      <a href="../index.html">Inicio</a>
-      <a href="../servicios/servicios.html">Servicios</a>
-      <a href="../nosotros/nosotros.html">Nosotros</a>
-      <a href="../inicio_sesion/iniciosesion.html">Iniciar sesión</a>
-      <a href="../contacto/contacto.html">Contacto</a>
+    <nav class="nav" aria-label="Menú principal">
+      <div class="nav-izq">
+        <a href="../servicios/servicios.html">Servicios</a>
+        <a href="../nosotros/nosotros.html">Nosotros</a>
+      </div>
+      <a class="nav-logo" href="../index.html">
+        <img src="../imagenes/logo.png" alt="Arsidev, inicio">
+      </a>
+      <div class="nav-der">
+        <a href="../proyectos/proyectos.html">Proyectos</a>
+        <a href="../contacto/contacto.html">Contacto</a>
+      </div>
     </nav>
-    
-<h1>Servicios</h1>
   </header>
-   
+
+  <h1 class="title">Nosotros</h1>
+
+    <div class="lunas" aria-hidden="true">
+  <span class="luna"></span>
+  <span class="luna l2"></span>
+  <span class="luna l3"></span>
+  <span class="luna l4"></span>
+  <span class="luna l5"></span>
+  </div>
+  
+
   <main>
-    <div class="debug">
-      <img src="../imagenes/bug.png" alt="Debug" class="debug-image">
-      <section class="debug-text">
-        <h2>Debug</h2>
-        <p>Identificamos y solucionamos errores en tu software para garantizar un rendimiento óptimo y una experiencia de usuario sin problemas.</p>
-        <button class="servicios" onclick="window.location.href='debug/debug.html'">Ver más</button>
-      </section>
-    </div>
+    <section class="detalle">
+      <h2>Quiénes somos</h2>
+      <p>Somos un equipo con una vista moderna del mundo, nacientes por la problematica de sitios desactualizados</p>
 
-    <div class="crear">
-      <img src="../imagenes/crear.png" alt="Crear" class="crear-image">
-      <section class="crear-text">
-        <h2>Crear</h2>
-        <p>Desarrollamos soluciones personalizadas que se adaptan a las necesidades de tu negocio, desde aplicaciones web hasta sistemas complejos.</p>
-        <button class="servicios" onclick="window.location.href='crear/crear.html'">Ver más</button>
-      </section>
-    </div>
+      <h2>Qué nos mueve</h2>
 
-    <div class="mantenimiento">
-        <img src="../imagenes/mantenimiento.png" alt="Mantenimiento" class="mantenimiento-image">
-        <section class="mantenimiento-text">
-          <h2>Mantenimiento</h2>
-          <p>Ofrecemos servicios de mantenimiento continuo para asegurar que tu software y sistemas funcionen sin interrupciones y estén siempre actualizados.</p>
-          <button class="servicios" onclick="window.location.href='mantenimiento/mantenimiento.html'">Ver más</button>
+      <p>Creemos en la innovación, siendo esta el eje central de nuestros trabajos, gracias a nuestras politicas de responsabilidad y trabajo en equipo  nos aseguramos entregar un trabajo de alta calidad al cliente, respentando los tiempos de entrega pautados y con total honestidad de como nuestros proyectos son desarrollados.</p>
+      <h2>Misión</h2>
+      <p>Nuestra empresa desarrolla soluciones de software innovadoras, seguras y eficientes que ayuden a empresas y emprendedores a optimizar sus procesos, impulsar su crecimiento y adaptarse a las nuevas tecnologías, ofreciendo un servicio de calidad basado en la creatividad, la confianza y el compromiso con nuestros clientes.</p>
+
+      <h2>Visión</h2>
+      <p>Al año 2030, ser una empresa reconocida por solucionar problemas a nivel tecnológico (software) siendo innovadores, confiables y de alta calidad que impulsen el crecimiento económico y social del país.</p>
+    </section>
+
+    <!-- EDITA: una .card por persona. Copia y pega un bloque para agregar más -->
+    <div class="equipo">
+      <div class="card">
+        <img src="../imagenes/JFBA.jpeg" alt="Juan F Baena A" class="team">
+        <section>
+          <h2>Fernando Baena</h2>
+          <p>Fundador de la empresa y administrador de desarrolo web a nivel back-end.</p>
         </section>
-    </div>
+      </div>
 
+      <div class="card">
+        <img src="../imagenes/HMGS.jpeg" alt="Helen M Gonzales S" class="team">
+        <section>
+          <h2>Helen Gonzales</h2>
+          <p>Co-fundadora de Arsidev yadministrador de desarrollo web front-end.</p>
+        </section>
+      </div>
+    </div>
   </main>
+
   <footer>
     <p>&copy; 2026 Arsidev. Todos los derechos reservados.</p>
   </footer>
-
-  <script src="../js/menu.js"></script>
+  <script src="../js/main.js"></script>
 </body>
-</html> 
+</html>
