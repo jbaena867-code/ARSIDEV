@@ -10,10 +10,10 @@
   font-display: swap;
 }
 
-/*  variable en la pagina */
+/*  variables de la pagina */
 :root {
   --fondo: #131313;        /* color de fondo */
-  --tinta: #d6dcea;        /* color del logo y del texto */
+  --tinta: #d6dcea;        /* color del del texto */
   --tinta2: #212123;
   --acento: #3a6ea5;
   --fuente: "Michroma", system-ui, sans-serif;
@@ -55,7 +55,7 @@ body {
   object-fit: cover;       /*consultar*/
   z-index: -1;
 }
-/* ===== NAV estilo BSWT ===== */
+/* nav BSWT */
 .nav {
   position: absolute;
   top: 0;
@@ -106,7 +106,7 @@ body {
   gap: 1rem;
 }
 
-/* clamp(mínimo, ideal, máximo): el tamaño crece con la pantalla pero con límites */
+/* clamp(mínimo, ideal, máximo) */
 .logo {
   width: clamp(96px, 22vw, 206px);
   height: auto;
@@ -119,8 +119,8 @@ body {
   letter-spacing: .08em;
 }
 
-/* ===== 4. ANIMACIÓN DE ENTRADA ===== */
-/* Estado inicial: todo escondido hasta que JS agrega la clase "listo" al <body> */
+/* ANIMACIÓN DE ENTRADA */
+/* todo escondido hasta que JS agrega la clase "listo" */
 .logo, .nombre { opacity: 0; }
 
 .listo .logo {
@@ -135,17 +135,12 @@ body {
 
 
 
-/* La luna sube desde abajo y gira un poco */
+/* La luna sube desde abajo y gira */
 @keyframes sube-luna {
   from { opacity: 0; transform: translateY(70vh) rotate(100deg); }
   to   { opacity: 1; transform: translateY(0)    rotate(0deg); }
 }
 
-/* El nombre aparece y las letras se "cierran" a su espacio final */
-@keyframes aparece-texto {
-  from { opacity: 0; letter-spacing: .4em; }
-  to   { opacity: 1; letter-spacing: .05em; }
-}
 
 @keyframes aparece {
   from { opacity: 0; }
